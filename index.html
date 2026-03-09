@@ -3,777 +3,781 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Amit Patidar | AWS Cloud DevOps Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<title>Amit Patidar | MultiCloud DevOps Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#07080d;
-  --bg2:#0d0f18;
-  --bg3:#111420;
-  --cyan:#4df0c0;
+  --bg:#080c12;
+  --bg2:#0b1018;
+  --bg3:#0e1420;
+  --card:#111827;
+  --card2:#0f1520;
+  --cyan:#2dd4c8;
+  --cyan2:#4aeee6;
   --blue:#5b8dee;
-  --amber:#f5a623;
-  --red:#ff4f6a;
-  --text:#d0d8f0;
-  --muted:#5a6285;
-  --border:rgba(77,240,192,0.12);
-  --card:rgba(255,255,255,0.03);
+  --amber:#f59e0b;
+  --green:#22c55e;
+  --text:#94a3b8;
+  --white:#f1f5f9;
+  --border:rgba(45,212,200,0.1);
+  --border2:rgba(255,255,255,0.06);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'DM Sans',sans-serif;
-  overflow-x:hidden;
+  background:var(--bg);color:var(--text);
+  font-family:'DM Sans',sans-serif;overflow-x:hidden;
 }
 
-/* ─── NOISE TEXTURE ─── */
+/* ── SUBTLE BG GRID ── */
 body::before{
   content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;opacity:.5;
+  background-image:
+    linear-gradient(rgba(45,212,200,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(45,212,200,0.025) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;z-index:0;
 }
 
-/* ─── NAV ─── */
+/* ── NAV ── */
 nav{
-  position:fixed;top:0;width:100%;
-  padding:.9rem 5rem;
+  position:fixed;top:0;width:100%;z-index:999;
+  padding:1.1rem 4rem;
   display:flex;justify-content:space-between;align-items:center;
-  background:rgba(7,8,13,0.8);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  z-index:200;
+  background:rgba(8,12,18,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
 }
-.logo{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;
-  color:#fff;letter-spacing:1px;text-decoration:none;
+.nav-logo{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;
+  color:var(--white);text-decoration:none;letter-spacing:.05em;
 }
-.logo em{color:var(--cyan);font-style:normal}
-.nav-links{display:flex;gap:2.5rem}
+.nav-logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
 .nav-links a{
-  font-family:'DM Mono',monospace;font-size:.72rem;
-  color:var(--muted);text-decoration:none;letter-spacing:.12em;
-  text-transform:uppercase;transition:color .2s;
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--text);text-decoration:none;letter-spacing:.12em;
+  text-transform:lowercase;transition:color .2s;
 }
 .nav-links a:hover{color:var(--cyan)}
+.nav-hire{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  color:var(--cyan);border:1px solid var(--cyan);
+  padding:.45rem 1.2rem;border-radius:4px;text-decoration:none;
+  letter-spacing:.08em;transition:all .2s;
+}
+.nav-hire:hover{background:var(--cyan);color:var(--bg)}
 
-/* ─── HERO ─── */
+/* ── HERO ── */
 #hero{
-  min-height:100vh;display:flex;align-items:center;
-  padding:10rem 5rem 6rem;position:relative;overflow:hidden;
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8rem 2rem 5rem;text-align:center;
+  position:relative;z-index:2;overflow:hidden;
 }
-.hero-blob{
-  position:absolute;top:-15%;right:-10%;
-  width:55vw;height:55vw;border-radius:50%;
-  background:radial-gradient(circle at 40% 40%,rgba(77,240,192,0.07),rgba(91,141,238,0.05) 50%,transparent 75%);
-  pointer-events:none;
-  animation:blobpulse 8s ease-in-out infinite;
-}
-.hero-blob2{
-  position:absolute;bottom:-20%;left:-8%;
-  width:40vw;height:40vw;border-radius:50%;
-  background:radial-gradient(circle,rgba(91,141,238,0.06),transparent 70%);
+.hero-glow{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:80vw;height:60vh;
+  background:radial-gradient(ellipse at 50% 0%,rgba(45,212,200,0.08) 0%,transparent 65%);
   pointer-events:none;
 }
-@keyframes blobpulse{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.05) rotate(3deg)}}
 
-.hero-inner{max-width:820px;position:relative;z-index:2}
+.avail-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--green);letter-spacing:.1em;
+  background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);
+  padding:.4rem 1.1rem;border-radius:100px;margin-bottom:2.5rem;
+}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:.7rem;
-  font-family:'DM Mono',monospace;font-size:.7rem;
-  color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;
-  background:rgba(77,240,192,0.06);
-  border:1px solid rgba(77,240,192,0.2);
-  padding:.35rem 1rem;border-radius:2px;
-  margin-bottom:2rem;
+/* pipeline flow bar */
+.pipeline-bar{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem;
 }
-.hero-eyebrow::before{
-  content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--cyan);box-shadow:0 0 8px var(--cyan);
-  animation:ping 2s infinite;
+.pipe-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--text);background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);padding:.3rem .9rem;border-radius:3px;
+  letter-spacing:.05em;
 }
-@keyframes ping{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.5}}
+.pipe-arrow{color:var(--cyan);font-size:.8rem;opacity:.6}
 
 h1{
   font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(3rem,6.5vw,6rem);
-  line-height:1.0;color:#fff;
-  letter-spacing:-.02em;
-  margin-bottom:1rem;
+  font-size:clamp(3.5rem,8vw,7.5rem);
+  line-height:.95;color:var(--white);
+  letter-spacing:-.03em;margin-bottom:1.5rem;
 }
-h1 .grad{
-  background:linear-gradient(135deg,var(--cyan) 0%,var(--blue) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+h1 .cyan-text{
+  color:var(--cyan);
+  text-shadow:0 0 60px rgba(45,212,200,0.35);
 }
 
-.hero-role{
-  font-family:'DM Mono',monospace;font-size:clamp(.85rem,1.4vw,1.05rem);
-  color:var(--muted);letter-spacing:.15em;text-transform:uppercase;
-  margin-bottom:2rem;
+.hero-roles{
+  font-family:'JetBrains Mono',monospace;font-size:clamp(.8rem,1.3vw,.95rem);
+  color:var(--text);letter-spacing:.15em;margin-bottom:1.5rem;
 }
-.hero-role span{color:var(--amber)}
+.hero-roles span{color:var(--cyan);margin:0 .8rem}
 
 .hero-desc{
-  font-size:1.1rem;line-height:1.85;color:var(--text);
-  font-weight:300;max-width:560px;margin-bottom:3rem;
+  font-size:1.05rem;line-height:1.8;color:var(--text);
+  font-weight:300;max-width:580px;margin:0 auto 3rem;
 }
-.hero-desc strong{color:#fff;font-weight:600}
 
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
-
-.cta-solid{
-  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;padding:.9rem 2.4rem;
-  background:var(--cyan);color:#07080d;font-weight:500;
-  border:none;cursor:pointer;text-decoration:none;
-  transition:all .25s;border-radius:2px;
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-fill{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;
+  padding:.9rem 2rem;background:var(--cyan);color:var(--bg);
+  border:none;border-radius:5px;cursor:pointer;text-decoration:none;
+  font-weight:500;transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
 }
-.cta-solid:hover{background:#fff;box-shadow:0 8px 30px rgba(77,240,192,0.3)}
-
-.cta-ghost{
-  font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;padding:.9rem 2.4rem;
-  background:transparent;color:var(--text);
-  border:1px solid rgba(255,255,255,0.15);
-  cursor:pointer;text-decoration:none;transition:all .25s;border-radius:2px;
+.btn-fill:hover{background:var(--cyan2);box-shadow:0 8px 30px rgba(45,212,200,0.3);transform:translateY(-2px)}
+.btn-outline{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;
+  padding:.9rem 2rem;background:transparent;color:var(--white);
+  border:1px solid var(--border2);border-radius:5px;cursor:pointer;text-decoration:none;
+  transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
 }
-.cta-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.btn-resume{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.1em;
+  padding:.9rem 2rem;background:transparent;color:var(--amber);
+  border:1px solid rgba(245,158,11,0.35);border-radius:5px;cursor:pointer;text-decoration:none;
+  transition:all .25s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.btn-resume:hover{background:rgba(245,158,11,0.08);border-color:var(--amber);transform:translateY(-2px)}
 
 .hero-stats{
-  display:flex;gap:3rem;margin-top:4rem;
-  padding-top:3rem;border-top:1px solid var(--border);
+  display:flex;gap:0;margin-top:5rem;
+  border:1px solid var(--border2);border-radius:8px;
+  overflow:hidden;background:var(--card);
 }
-.hstat-num{
-  font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;
-  color:var(--cyan);display:block;line-height:1;margin-bottom:.3rem;
+.hstat{
+  padding:1.5rem 2.5rem;text-align:center;
+  border-right:1px solid var(--border2);
 }
-.hstat-lbl{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--muted);letter-spacing:.15em;text-transform:uppercase;
-}
-
-/* ─── SECTIONS ─── */
-section{padding:7rem 5rem;position:relative;z-index:2}
-.sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:4rem}
-.sec-idx{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--cyan);letter-spacing:.2em;
-}
-.sec-title{
+.hstat:last-child{border-right:none}
+.hstat-n{
   font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(1.6rem,2.5vw,2.2rem);color:#fff;letter-spacing:-.01em;
+  font-size:2rem;color:var(--cyan);display:block;line-height:1;
 }
-.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--border),transparent);margin-left:.5rem}
+.hstat-l{
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;
+  color:var(--text);letter-spacing:.1em;text-transform:uppercase;margin-top:.4rem;display:block;
+}
 
-/* ─── SKILLS ─── */
+/* ── SECTION COMMONS ── */
+section{padding:7rem 4rem;position:relative;z-index:2;scroll-margin-top:70px}
+.sec-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;
+  color:var(--cyan);letter-spacing:.2em;text-transform:lowercase;
+  margin-bottom:1rem;display:block;
+}
+.sec-eyebrow::before{content:'// '}
+.sec-big-title{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(2rem,4vw,3.2rem);color:var(--white);
+  letter-spacing:-.02em;margin-bottom:.8rem;
+}
+.sec-big-title .cyan-text{color:var(--cyan)}
+.sec-underline{width:50px;height:3px;background:linear-gradient(to right,var(--cyan),transparent);border-radius:2px;margin-bottom:3.5rem}
+
+/* ── TECHNICAL ARSENAL ── */
 #skills{background:var(--bg2)}
-.skills-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;
+.arsenal-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
 }
-.skill-card{
-  background:var(--card);border:1px solid var(--border);
-  padding:2rem;border-radius:4px;
-  position:relative;overflow:hidden;
-  transition:transform .3s,border-color .3s,box-shadow .3s;
+@media(max-width:1200px){.arsenal-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.arsenal-grid{grid-template-columns:1fr}}
+
+.arsenal-card{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:10px;padding:2rem;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
 }
-.skill-card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(77,240,192,0.35);
+.arsenal-card:hover{
+  border-color:rgba(45,212,200,0.25);
+  transform:translateY(-4px);
   box-shadow:0 20px 50px rgba(0,0,0,0.4);
 }
-.skill-card::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(to right,var(--cyan),transparent);
+.ac-header{
+  display:flex;align-items:center;gap:.8rem;
+  margin-bottom:1.8rem;padding-bottom:1.2rem;
+  border-bottom:1px solid var(--border2);
+}
+.ac-icon{
+  width:40px;height:40px;border-radius:8px;
+  background:rgba(45,212,200,0.08);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+}
+.ac-title{
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;
+  color:var(--white);letter-spacing:-.01em;
+}
+.ac-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.ac-tag{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--text);background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);padding:.35rem .8rem;
+  border-radius:4px;letter-spacing:.03em;transition:all .2s;
+}
+.ac-tag:hover{color:var(--cyan);border-color:var(--border);background:rgba(45,212,200,0.05)}
+
+/* ── PROJECTS ── */
+#projects{background:var(--bg3)}
+.proj-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+@media(max-width:1100px){.proj-grid{grid-template-columns:1fr}}
+
+.pcard{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:10px;padding:2rem;
+  display:flex;flex-direction:column;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+  position:relative;overflow:hidden;
+}
+.pcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,var(--cyan),var(--blue));
   opacity:0;transition:opacity .3s;
 }
-.skill-card:hover::after{opacity:1}
-.sk-ico{font-size:2rem;margin-bottom:1.2rem;display:block}
-.sk-name{
-  font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
-  color:#fff;margin-bottom:.5rem;letter-spacing:-.01em;
-}
-.sk-desc{font-size:.9rem;color:var(--muted);line-height:1.65;font-weight:300}
-.sk-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
-.pill{
-  font-family:'DM Mono',monospace;font-size:.6rem;
-  color:var(--cyan);background:rgba(77,240,192,0.07);
-  border:1px solid rgba(77,240,192,0.2);
-  padding:.22rem .7rem;border-radius:2px;letter-spacing:.05em;
-}
-
-/* ─── PROJECTS ─── */
-#projects{background:var(--bg3)}
-
-.projects-list{display:flex;flex-direction:column;gap:2rem}
-
-.proj-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:6px;overflow:hidden;
-  transition:border-color .3s,box-shadow .3s;
-  position:relative;
-}
-.proj-card:hover{
-  border-color:rgba(77,240,192,0.3);
+.pcard:hover{
+  border-color:rgba(45,212,200,0.25);
+  transform:translateY(-5px);
   box-shadow:0 25px 60px rgba(0,0,0,0.5);
 }
+.pcard:hover::before{opacity:1}
+.pcard.featured{border-color:rgba(45,212,200,0.2)}
+.pcard.featured::before{opacity:1}
 
-.proj-inner{display:grid;grid-template-columns:1fr 2fr;gap:0}
-
-.proj-side{
-  background:rgba(255,255,255,0.02);
-  border-right:1px solid var(--border);
-  padding:2.5rem;
-  display:flex;flex-direction:column;justify-content:space-between;
+.pcard-num{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  color:var(--cyan);letter-spacing:.2em;margin-bottom:1rem;
 }
-.proj-num{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--muted);letter-spacing:.2em;margin-bottom:1.5rem;
-}
-.proj-icon{font-size:3rem;margin-bottom:1rem;display:block}
-.proj-title{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.3rem;color:#fff;line-height:1.2;letter-spacing:-.02em;
+.pcard-title{
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;
+  color:var(--white);letter-spacing:-.01em;line-height:1.25;
   margin-bottom:1rem;
 }
-.proj-status{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:'DM Mono',monospace;font-size:.62rem;
-  color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;
+.pcard-desc{
+  font-size:.9rem;line-height:1.75;color:var(--text);
+  font-weight:300;margin-bottom:1.5rem;flex:1;
 }
-.proj-status::before{
-  content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--cyan);box-shadow:0 0 8px var(--cyan);
+.pcard-desc strong{color:var(--white);font-weight:500}
+.pcard-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.ptag{
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;
+  color:var(--cyan);background:rgba(45,212,200,0.07);
+  border:1px solid rgba(45,212,200,0.2);
+  padding:.28rem .7rem;border-radius:3px;letter-spacing:.04em;
+}
+.pcard-links{display:flex;gap:1rem;margin-top:auto}
+.plink{
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--text);text-decoration:none;letter-spacing:.05em;
+  display:inline-flex;align-items:center;gap:.4rem;
+  transition:color .2s;
+}
+.plink:hover{color:var(--cyan)}
+
+/* pipeline inside project card */
+.pflow{margin-bottom:1.2rem}
+.pflow-label{
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  color:var(--text);letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:.6rem;opacity:.6;
+}
+.pflow-steps{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem}
+.pflow-step{
+  font-family:'JetBrains Mono',monospace;font-size:.6rem;
+  background:rgba(91,141,238,0.08);border:1px solid rgba(91,141,238,0.2);
+  color:var(--blue);padding:.2rem .6rem;border-radius:3px;white-space:nowrap;
+}
+.pflow-arr{color:var(--text);opacity:.4;font-size:.7rem}
+
+/* ── PIPELINE SECTION ── */
+#pipeline{background:var(--bg2)}
+.pipe-visual{
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:10px;padding:3rem;overflow-x:auto;
+}
+.pipe-title-sm{
+  font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
+  color:var(--white);margin-bottom:2rem;letter-spacing:-.01em;
+}
+.pipe-row{
+  display:flex;align-items:center;gap:0;
+  margin-bottom:1.5rem;
+}
+.pipe-row:last-child{margin-bottom:0}
+.pipe-stage{
+  display:flex;flex-direction:column;align-items:center;
+  gap:.6rem;min-width:110px;
+}
+.pipe-box{
+  background:rgba(255,255,255,0.04);border:1px solid var(--border2);
+  border-radius:6px;padding:.8rem 1rem;text-align:center;width:100%;
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;
+  color:var(--text);letter-spacing:.04em;transition:all .25s;
+}
+.pipe-box:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(45,212,200,0.05)}
+.pipe-box.active{border-color:rgba(45,212,200,0.4);color:var(--cyan);background:rgba(45,212,200,0.06)}
+.pipe-icon{font-size:1.1rem}
+.pipe-connector{
+  flex:1;height:1px;background:linear-gradient(to right,rgba(45,212,200,0.3),rgba(45,212,200,0.1));
+  min-width:20px;position:relative;
+}
+.pipe-connector::after{
+  content:'›';position:absolute;right:-4px;top:50%;transform:translateY(-50%);
+  color:var(--cyan);font-size:.8rem;
 }
 
-.proj-body{padding:2.5rem}
-
-.proj-desc{
-  font-size:.98rem;line-height:1.8;color:var(--text);
-  font-weight:300;margin-bottom:2rem;
-}
-.proj-desc strong{color:#fff;font-weight:600}
-
-.proj-flow{margin-bottom:2rem}
-.flow-label{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--muted);letter-spacing:.15em;text-transform:uppercase;
-  margin-bottom:1rem;
-}
-.flow-steps{
-  display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;
-}
-.flow-step{
-  font-family:'DM Mono',monospace;font-size:.68rem;
-  background:rgba(91,141,238,0.1);
-  border:1px solid rgba(91,141,238,0.25);
-  color:var(--blue);
-  padding:.35rem .8rem;border-radius:3px;
-  white-space:nowrap;
-}
-.flow-arrow{color:var(--muted);font-size:.8rem}
-
-.proj-tech{display:flex;flex-wrap:wrap;gap:.5rem}
-.tech-badge{
-  font-family:'DM Mono',monospace;font-size:.6rem;
-  color:var(--amber);background:rgba(245,166,35,0.07);
-  border:1px solid rgba(245,166,35,0.2);
-  padding:.22rem .7rem;border-radius:2px;letter-spacing:.05em;
-}
-
-/* ─── TOOLS ─── */
-#tools{background:var(--bg2)}
-.tools-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
-  gap:.8rem;
-}
-.tool-tile{
-  background:var(--card);border:1px solid var(--border);
-  padding:1.5rem 1rem;text-align:center;border-radius:4px;
-  transition:all .25s;cursor:default;
-}
-.tool-tile:hover{
-  background:rgba(77,240,192,0.06);
-  border-color:rgba(77,240,192,0.3);
-  transform:translateY(-3px);
-}
-.tool-tile .ico{font-size:1.8rem;display:block;margin-bottom:.5rem}
-.tool-tile .lbl{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--text);letter-spacing:.05em;
-}
-
-/* ─── ABOUT ─── */
+/* ── ABOUT ── */
 #about{background:var(--bg)}
-.about-grid{
-  display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;
+.about-wrap{
+  display:grid;grid-template-columns:1.6fr 1fr;
+  gap:5rem;align-items:start;
 }
-.terminal{
-  background:#050709;
-  border:1px solid var(--border);
-  border-radius:6px;overflow:hidden;
-  font-family:'DM Mono',monospace;font-size:.78rem;
-  position:sticky;top:7rem;
+.about-text h3{
+  font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;
+  color:var(--white);letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.1;
 }
-.t-bar{
-  background:rgba(255,255,255,0.04);
-  padding:.65rem 1rem;
-  display:flex;align-items:center;gap:.45rem;
-  border-bottom:1px solid var(--border);
-}
-.t-dot{width:10px;height:10px;border-radius:50%}
-.t-dot.re{background:#ff5f57}.t-dot.ye{background:#febc2e}.t-dot.gr{background:#28c840}
-.t-ttl{
-  font-family:'DM Mono',monospace;font-size:.6rem;
-  color:var(--muted);letter-spacing:.1em;margin-left:.5rem;
-}
-.t-body{padding:1.5rem;line-height:2.2;overflow-x:auto}
-.tp{color:#28c840}.tc{color:var(--cyan)}.to{color:var(--text);padding-left:1rem}
-.tk{color:var(--amber)}.tv{color:var(--cyan)}.tc2{color:#7c9cf5}
-
-.about-content h2{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;
-  color:#fff;letter-spacing:-.02em;margin-bottom:1.5rem;
-}
-.about-content p{
-  font-size:1rem;line-height:1.85;color:var(--text);
+.about-text p{
+  font-size:.98rem;line-height:1.85;color:var(--text);
   font-weight:300;margin-bottom:1.2rem;
 }
-.about-content p strong{color:var(--cyan);font-weight:600}
+.about-text p strong{color:var(--cyan);font-weight:500}
+.about-terminal{
+  background:#050709;border:1px solid var(--border2);
+  border-radius:8px;overflow:hidden;
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;
+  position:sticky;top:7rem;
+}
+.at-bar{
+  background:rgba(255,255,255,0.03);padding:.6rem 1rem;
+  display:flex;align-items:center;gap:.4rem;
+  border-bottom:1px solid var(--border2);
+}
+.tdot{width:10px;height:10px;border-radius:50%}
+.tdot.r{background:#ff5f57}.tdot.y{background:#febc2e}.tdot.g{background:#28c840}
+.at-ttl{font-size:.58rem;color:var(--text);opacity:.5;margin-left:.5rem;letter-spacing:.1em}
+.at-body{padding:1.5rem;line-height:2.1}
+.tp{color:#28c840}.tc{color:var(--cyan)}.to{color:var(--text);padding-left:.8rem}
+.tk{color:var(--amber)}.tv{color:var(--cyan)}.td{color:var(--text);opacity:.4}
 
-.cert-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:2rem;
-}
-.cert{
-  background:var(--card);border:1px solid var(--border);
-  padding:1rem;border-radius:4px;
-  display:flex;align-items:center;gap:.7rem;
-}
-.cert-ico{font-size:1.4rem;flex-shrink:0}
-.cert-name{
-  font-family:'DM Mono',monospace;font-size:.65rem;
-  color:var(--text);letter-spacing:.05em;
-}
-.cert-sub{
-  font-family:'DM Mono',monospace;font-size:.58rem;
-  color:var(--muted);letter-spacing:.05em;margin-top:.1rem;
-}
-
-/* ─── CONTACT ─── */
+/* ── CONTACT ── */
 #contact{background:var(--bg2)}
-.contact-grid{
-  display:grid;grid-template-columns:1.3fr 1fr;gap:5rem;align-items:start;
+.contact-wrap{
+  display:grid;grid-template-columns:1.2fr 1fr;
+  gap:5rem;align-items:start;
 }
-.contact-heading{
+.contact-head{
   font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(1.8rem,3vw,2.6rem);color:#fff;
-  letter-spacing:-.02em;line-height:1.1;margin-bottom:1.5rem;
+  font-size:clamp(1.8rem,3vw,2.8rem);color:var(--white);
+  letter-spacing:-.02em;line-height:1.1;margin-bottom:1.2rem;
 }
-.contact-heading .grad{
-  background:linear-gradient(135deg,var(--cyan),var(--blue));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.contact-sub{font-size:1rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:2.5rem}
-
-.contact-rows{display:flex;flex-direction:column;gap:1rem}
+.contact-head .cyan-text{color:var(--cyan)}
+.contact-sub{font-size:.95rem;color:var(--text);line-height:1.7;font-weight:300;margin-bottom:2rem}
+.crows{display:flex;flex-direction:column;gap:.7rem}
 .crow{
   display:flex;align-items:center;gap:1rem;
   padding:.9rem 1.2rem;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:4px;
-  font-family:'DM Mono',monospace;font-size:.75rem;
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  transition:border-color .2s;
 }
-.cico{font-size:1.1rem;flex-shrink:0}
-.clbl{color:var(--muted);width:75px;flex-shrink:0;font-size:.65rem;letter-spacing:.1em}
+.crow:hover{border-color:rgba(45,212,200,0.2)}
+.cico{font-size:1rem;flex-shrink:0}
+.clbl{color:var(--text);opacity:.5;width:72px;flex-shrink:0;font-size:.6rem;letter-spacing:.08em}
 .cval{color:var(--cyan)}
-.cval a,.crow a{color:var(--cyan);text-decoration:none;transition:color .2s}
-.cval a:hover,.crow a:hover{color:#fff;text-decoration:underline}
+.cval a{color:var(--cyan);text-decoration:none;transition:color .2s}
+.cval a:hover{color:var(--white);text-decoration:underline}
 
-.skill-badges{display:flex;flex-direction:column;gap:.8rem}
+.badge-stack{display:flex;flex-direction:column;gap:.8rem}
 .sbadge{
-  background:var(--card);border:1px solid var(--border);
-  padding:1.3rem 1.5rem;border-radius:4px;
-  display:flex;align-items:center;gap:1.2rem;
+  background:var(--card);border:1px solid var(--border2);
+  border-radius:8px;padding:1.2rem 1.4rem;
+  display:flex;align-items:center;gap:1rem;
   transition:border-color .3s,transform .3s;
 }
-.sbadge:hover{border-color:rgba(77,240,192,.3);transform:translateX(5px)}
-.sico{font-size:1.8rem;flex-shrink:0}
-.sname{
-  font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;
-  color:#fff;letter-spacing:-.01em;margin-bottom:.2rem;
-}
-.ssub{
-  font-family:'DM Mono',monospace;font-size:.62rem;
-  color:var(--muted);letter-spacing:.05em;
-}
+.sbadge:hover{border-color:rgba(45,212,200,0.25);transform:translateX(4px)}
+.sico{font-size:1.6rem;flex-shrink:0}
+.sname{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--white);margin-bottom:.2rem}
+.ssub{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--text);opacity:.6;letter-spacing:.04em}
 
-/* ─── FOOTER ─── */
+/* ── FOOTER ── */
 footer{
-  background:#050709;border-top:1px solid var(--border);
-  padding:2rem 5rem;
+  background:#050709;border-top:1px solid var(--border2);
+  padding:2rem 4rem;
   display:flex;justify-content:space-between;align-items:center;
   position:relative;z-index:2;
 }
-.ft-name{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;
-  color:var(--cyan);letter-spacing:.05em;
-}
-.ft-copy{
-  font-family:'DM Mono',monospace;font-size:.62rem;
-  color:var(--muted);letter-spacing:.1em;
-}
+.ft-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:var(--cyan);letter-spacing:.05em}
+.ft-copy{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--text);opacity:.4;letter-spacing:.08em}
 
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.hero-inner > *{animation:fadeUp .65s ease both}
-.hero-inner > *:nth-child(1){animation-delay:.05s}
-.hero-inner > *:nth-child(2){animation-delay:.18s}
-.hero-inner > *:nth-child(3){animation-delay:.3s}
-.hero-inner > *:nth-child(4){animation-delay:.42s}
-.hero-inner > *:nth-child(5){animation-delay:.54s}
-.hero-inner > *:nth-child(6){animation-delay:.66s}
+/* ── FADE IN ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+#hero > *{animation:fadeUp .7s ease both}
+#hero > *:nth-child(1){animation-delay:.05s}
+#hero > *:nth-child(2){animation-delay:.15s}
+#hero > *:nth-child(3){animation-delay:.25s}
+#hero > *:nth-child(4){animation-delay:.35s}
+#hero > *:nth-child(5){animation-delay:.45s}
+#hero > *:nth-child(6){animation-delay:.55s}
+#hero > *:nth-child(7){animation-delay:.65s}
 
-/* ─── RESPONSIVE ─── */
+/* ── RESPONSIVE ── */
 @media(max-width:960px){
-  nav{padding:.9rem 2rem}
-  section{padding:5rem 2rem}
-  #hero{padding:8rem 2rem 5rem}
-  .hero-stats{flex-wrap:wrap;gap:2rem}
-  .proj-inner{grid-template-columns:1fr}
-  .proj-side{border-right:none;border-bottom:1px solid var(--border)}
-  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
-  .terminal{position:static}
-  footer{padding:1.5rem 2rem;flex-direction:column;gap:.8rem;text-align:center}
+  nav{padding:1rem 1.5rem}
+  .nav-links a:not(.nav-hire){display:none}
+  section{padding:5rem 1.5rem}
+  #hero{padding:7rem 1.5rem 4rem}
+  .hero-stats{flex-direction:column;width:100%}
+  .hstat{border-right:none;border-bottom:1px solid var(--border2)}
+  .hstat:last-child{border-bottom:none}
+  .proj-grid{grid-template-columns:1fr}
+  .about-wrap,.contact-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .about-terminal{position:static}
+  footer{padding:1.5rem;flex-direction:column;gap:.8rem;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAV ── -->
 <nav>
-  <a class="logo" href="#">Amit<em>.</em>dev</a>
+  <a class="nav-logo" href="#"><span>&lt;</span>AP<span> /&gt;</span></a>
   <div class="nav-links">
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#tools">Tools</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#projects">projects</a>
+    <a href="#pipeline">pipeline</a>
+    <a href="#contact">contact</a>
+    <a class="nav-hire" href="#contact">hire_me()</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<header id="hero">
-  <div class="hero-blob"></div>
-  <div class="hero-blob2"></div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">MultiCloud DevOps Engineer &nbsp;·&nbsp; NareshIT</div>
-    <h1>AMIT<br><span class="grad">PATIDAR</span></h1>
-    <p class="hero-role">DevOps &nbsp;<span>//</span>&nbsp; Cloud &nbsp;<span>//</span>&nbsp; <span>Containers &amp; Orchestration</span></p>
-    <p class="hero-desc">
-      Building <strong>end-to-end DevOps pipelines</strong> across AWS, Azure &amp; GCP. Expert in
-      <strong>Terraform IaC</strong>, <strong>CI/CD automation</strong>,
-      <strong>Docker containerization</strong>, and <strong>Kubernetes orchestration</strong> at scale.
-    </p>
-    <div class="hero-cta">
-      <a href="#projects" class="cta-solid">View Projects</a>
-      <a href="#contact" class="cta-ghost">Get In Touch</a>
-    </div>
-    <div class="hero-stats">
-      <div><span class="hstat-num">6+</span><span class="hstat-lbl">Core Skills</span></div>
-      <div><span class="hstat-num">3</span><span class="hstat-lbl">Cloud Platforms</span></div>
-      <div><span class="hstat-num">3</span><span class="hstat-lbl">Live Projects</span></div>
-      <div><span class="hstat-num">∞</span><span class="hstat-lbl">Pipelines Automated</span></div>
-    </div>
-  </div>
-</header>
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-glow"></div>
 
-<!-- SKILLS -->
+  <div class="avail-badge">
+    <span class="avail-dot"></span>
+    Available for opportunities
+  </div>
+
+  <div class="pipeline-bar">
+    <span class="pipe-tag">GitHub</span><span class="pipe-arrow">→</span>
+    <span class="pipe-tag">Jenkins</span><span class="pipe-arrow">→</span>
+    <span class="pipe-tag">Docker</span><span class="pipe-arrow">→</span>
+    <span class="pipe-tag">ECR</span><span class="pipe-arrow">→</span>
+    <span class="pipe-tag">EKS</span><span class="pipe-arrow">→</span>
+    <span class="pipe-tag">ArgoCD</span><span class="pipe-arrow">→</span>
+    <span class="pipe-tag">Production</span>
+  </div>
+
+  <h1>Hi, I'm<br><span class="cyan-text">Amit Patidar</span></h1>
+
+  <p class="hero-roles">
+    DevOps Engineer <span>|</span> Cloud Engineer <span>|</span> MultiCloud Specialist
+  </p>
+
+  <p class="hero-desc">
+    I build scalable cloud infrastructure, automate deployments, and design
+    reliable CI/CD pipelines using modern DevOps tools.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#projects" class="btn-fill">🚀 View Projects</a>
+    <a href="https://drive.google.com/file/d/1PPcZTi_OCX4wyis7s7j13mGbu6c6ow17/view?usp=sharing" target="_blank" class="btn-resume">📄 Download Resume</a>
+    <a href="#contact" class="btn-outline">✉️ Contact Me</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat"><span class="hstat-n">6+</span><span class="hstat-l">Core Skills</span></div>
+    <div class="hstat"><span class="hstat-n">3</span><span class="hstat-l">Cloud Platforms</span></div>
+    <div class="hstat"><span class="hstat-n">3</span><span class="hstat-l">Live Projects</span></div>
+    <div class="hstat"><span class="hstat-n">∞</span><span class="hstat-l">Pipelines Built</span></div>
+  </div>
+</section>
+
+<!-- ── TECHNICAL ARSENAL ── -->
 <section id="skills">
-  <div class="sec-head">
-    <span class="sec-idx">01 /</span>
-    <h2 class="sec-title">Core Skills</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <span class="sk-ico">🔀</span>
-      <div class="sk-name">Git &amp; GitHub</div>
-      <div class="sk-desc">Version control mastery — branching strategies, PR workflows, code reviews, and team collaboration at scale.</div>
-      <div class="sk-pills"><span class="pill">Git Flow</span><span class="pill">Pull Requests</span><span class="pill">Branching</span><span class="pill">Tagging</span></div>
+  <span class="sec-eyebrow">skills &amp; technologies</span>
+  <h2 class="sec-big-title">Technical <span class="cyan-text">Arsenal</span></h2>
+  <div class="sec-underline"></div>
+  <div class="arsenal-grid">
+
+    <div class="arsenal-card">
+      <div class="ac-header">
+        <div class="ac-icon">🟠</div>
+        <div class="ac-title">Cloud Platforms</div>
+      </div>
+      <div class="ac-tags">
+        <span class="ac-tag">EC2</span><span class="ac-tag">S3</span><span class="ac-tag">IAM</span>
+        <span class="ac-tag">VPC</span><span class="ac-tag">ECR</span><span class="ac-tag">ECS</span>
+        <span class="ac-tag">EKS</span><span class="ac-tag">CloudWatch</span><span class="ac-tag">Route53</span>
+        <span class="ac-tag">Load Balancer</span><span class="ac-tag">Auto Scaling</span><span class="ac-tag">RDS</span>
+        <span class="ac-tag">Azure</span><span class="ac-tag">GCP</span>
+      </div>
     </div>
-    <div class="skill-card">
-      <span class="sk-ico">🏗️</span>
-      <div class="sk-name">Terraform</div>
-      <div class="sk-desc">Infrastructure as Code across AWS, Azure &amp; GCP. Modules, remote state, workspaces, and full multi-cloud provisioning.</div>
-      <div class="sk-pills"><span class="pill">IaC</span><span class="pill">Modules</span><span class="pill">State Mgmt</span><span class="pill">Multi-Cloud</span></div>
+
+    <div class="arsenal-card">
+      <div class="ac-header">
+        <div class="ac-icon">🐳</div>
+        <div class="ac-title">DevOps Tools</div>
+      </div>
+      <div class="ac-tags">
+        <span class="ac-tag">Docker</span><span class="ac-tag">Kubernetes</span><span class="ac-tag">Jenkins</span>
+        <span class="ac-tag">ArgoCD</span><span class="ac-tag">Terraform</span><span class="ac-tag">Helm</span>
+        <span class="ac-tag">GitOps</span><span class="ac-tag">Ansible</span><span class="ac-tag">Git</span>
+        <span class="ac-tag">GitHub</span><span class="ac-tag">Linux</span><span class="ac-tag">Bash</span>
+      </div>
     </div>
-    <div class="skill-card">
-      <span class="sk-ico">⚙️</span>
-      <div class="sk-name">CI/CD Pipelines</div>
-      <div class="sk-desc">Full pipeline engineering with GitHub Actions, Jenkins, and GitLab CI — automated build, test, and release workflows.</div>
-      <div class="sk-pills"><span class="pill">GitHub Actions</span><span class="pill">Jenkins</span><span class="pill">GitLab CI</span><span class="pill">ArgoCD</span></div>
+
+    <div class="arsenal-card">
+      <div class="ac-header">
+        <div class="ac-icon">♾️</div>
+        <div class="ac-title">CI/CD</div>
+      </div>
+      <div class="ac-tags">
+        <span class="ac-tag">Jenkins Pipelines</span><span class="ac-tag">GitHub Actions</span>
+        <span class="ac-tag">GitLab CI</span><span class="ac-tag">Docker Build</span>
+        <span class="ac-tag">Continuous Integration</span><span class="ac-tag">Continuous Deployment</span>
+        <span class="ac-tag">Automated Testing</span><span class="ac-tag">ECR Push</span>
+        <span class="ac-tag">Rolling Updates</span>
+      </div>
     </div>
-    <div class="skill-card">
-      <span class="sk-ico">🐳</span>
-      <div class="sk-name">Docker</div>
-      <div class="sk-desc">Containerization expertise — Dockerfiles, multi-stage builds, Compose, image optimization, ECR &amp; Docker Hub registries.</div>
-      <div class="sk-pills"><span class="pill">Dockerfile</span><span class="pill">Multi-stage</span><span class="pill">ECR</span><span class="pill">Compose</span></div>
+
+    <div class="arsenal-card">
+      <div class="ac-header">
+        <div class="ac-icon">📊</div>
+        <div class="ac-title">Monitoring &amp; Logging</div>
+      </div>
+      <div class="ac-tags">
+        <span class="ac-tag">Prometheus</span><span class="ac-tag">Grafana</span>
+        <span class="ac-tag">CloudWatch</span><span class="ac-tag">ELK Stack</span>
+        <span class="ac-tag">Elasticsearch</span><span class="ac-tag">Logstash</span>
+        <span class="ac-tag">Kibana</span><span class="ac-tag">Alertmanager</span>
+        <span class="ac-tag">Node Exporter</span><span class="ac-tag">Dashboards</span>
+      </div>
     </div>
-    <div class="skill-card">
-      <span class="sk-ico">☸️</span>
-      <div class="sk-name">Kubernetes</div>
-      <div class="sk-desc">Container orchestration at scale on EKS — deployments, services, ingress, HPA, Helm charts, and GitOps with ArgoCD.</div>
-      <div class="sk-pills"><span class="pill">EKS</span><span class="pill">Helm</span><span class="pill">ArgoCD</span><span class="pill">HPA</span></div>
+
+    <div class="arsenal-card">
+      <div class="ac-header">
+        <div class="ac-icon">🔀</div>
+        <div class="ac-title">Version Control</div>
+      </div>
+      <div class="ac-tags">
+        <span class="ac-tag">Git</span><span class="ac-tag">GitHub</span>
+        <span class="ac-tag">GitLab</span><span class="ac-tag">Branching Strategies</span>
+        <span class="ac-tag">Pull Requests</span><span class="ac-tag">Code Review</span>
+        <span class="ac-tag">Git Flow</span><span class="ac-tag">Tagging</span>
+        <span class="ac-tag">Merge Requests</span><span class="ac-tag">Rebasing</span>
+      </div>
     </div>
-    <div class="skill-card">
-      <span class="sk-ico">☁️</span>
-      <div class="sk-name">MultiCloud</div>
-      <div class="sk-desc">Cross-platform cloud architecture on AWS, Azure &amp; GCP — vendor-agnostic design, cost optimization, and best practices.</div>
-      <div class="sk-pills"><span class="pill">AWS</span><span class="pill">Azure</span><span class="pill">GCP</span><span class="pill">Cloud-Native</span></div>
+
+    <div class="arsenal-card">
+      <div class="ac-header">
+        <div class="ac-icon">🐍</div>
+        <div class="ac-title">Programming &amp; Languages</div>
+      </div>
+      <div class="ac-tags">
+        <span class="ac-tag">Python</span><span class="ac-tag">Python Scripting</span>
+        <span class="ac-tag">Django</span><span class="ac-tag">Bash Scripting</span>
+        <span class="ac-tag">Shell Scripts</span><span class="ac-tag">MySQL</span>
+        <span class="ac-tag">SQL Queries</span><span class="ac-tag">YAML</span>
+        <span class="ac-tag">JSON</span><span class="ac-tag">HCL (Terraform)</span>
+      </div>
     </div>
+
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ── PROJECTS ── -->
 <section id="projects">
-  <div class="sec-head">
-    <span class="sec-idx">02 /</span>
-    <h2 class="sec-title">Projects</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="projects-list">
+  <span class="sec-eyebrow">real-world work</span>
+  <h2 class="sec-big-title">Featured <span class="cyan-text">Projects</span></h2>
+  <div class="sec-underline"></div>
+  <div class="proj-grid">
 
-    <!-- PROJECT 1 -->
-    <div class="proj-card">
-      <div class="proj-inner">
-        <div class="proj-side">
-          <div>
-            <div class="proj-num">PROJECT 01</div>
-            <span class="proj-icon">🌩️</span>
-            <div class="proj-title">AWS Full-Stack End-to-End Infrastructure</div>
-          </div>
-          <div class="proj-status">Live &amp; Running</div>
+    <!-- P1 -->
+    <div class="pcard featured">
+      <div class="pcard-num">PROJECT // 001</div>
+      <div class="pcard-title">Full CI/CD Pipeline with Jenkins, Docker &amp; ArgoCD</div>
+      <div class="pcard-desc">
+        Automated build, containerization, image push to <strong>Amazon ECR</strong>, and GitOps-based deployment to <strong>Kubernetes</strong> using ArgoCD. Achieves zero-downtime deployments with full auditability and automatic rollback on failure.
+      </div>
+      <div class="pflow">
+        <div class="pflow-label">Pipeline Flow</div>
+        <div class="pflow-steps">
+          <span class="pflow-step">Code Push</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">Jenkins CI</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">Docker Build</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">ECR Push</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">ArgoCD Sync</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">EKS Deploy</span>
         </div>
-        <div class="proj-body">
-          <p class="proj-desc">
-            Designed and provisioned a <strong>complete AWS infrastructure stack</strong> from the ground up using Terraform. Covered VPC with public/private subnets, NAT Gateway, Internet Gateway, EC2 auto-scaling groups, Application Load Balancer, RDS (MySQL), S3 buckets, IAM roles and policies, Route53 DNS, ACM SSL certificates, and CloudWatch monitoring &amp; alerting — all as reusable Terraform modules.
-          </p>
-          <div class="proj-flow">
-            <div class="flow-label">Infrastructure Flow</div>
-            <div class="flow-steps">
-              <span class="flow-step">VPC + Subnets</span><span class="flow-arrow">→</span>
-              <span class="flow-step">EC2 + ASG</span><span class="flow-arrow">→</span>
-              <span class="flow-step">ALB</span><span class="flow-arrow">→</span>
-              <span class="flow-step">RDS</span><span class="flow-arrow">→</span>
-              <span class="flow-step">S3 + IAM</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Route53</span><span class="flow-arrow">→</span>
-              <span class="flow-step">CloudWatch</span>
-            </div>
-          </div>
-          <div class="proj-tech">
-            <span class="tech-badge">Terraform</span>
-            <span class="tech-badge">AWS VPC</span>
-            <span class="tech-badge">EC2 + ASG</span>
-            <span class="tech-badge">ALB</span>
-            <span class="tech-badge">RDS MySQL</span>
-            <span class="tech-badge">S3</span>
-            <span class="tech-badge">IAM</span>
-            <span class="tech-badge">Route53</span>
-            <span class="tech-badge">CloudWatch</span>
-            <span class="tech-badge">ACM</span>
-          </div>
-        </div>
+      </div>
+      <div class="pcard-tags">
+        <span class="ptag">Jenkins</span><span class="ptag">Docker</span><span class="ptag">AWS ECR</span>
+        <span class="ptag">Kubernetes</span><span class="ptag">ArgoCD</span><span class="ptag">GitOps</span>
+      </div>
+      <div class="pcard-links">
+        <a href="https://github.com/amit6264" target="_blank" class="plink">⊙ View Code</a>
+        <a href="#pipeline" class="plink">⊞ Architecture</a>
       </div>
     </div>
 
-    <!-- PROJECT 2 -->
-    <div class="proj-card">
-      <div class="proj-inner">
-        <div class="proj-side">
-          <div>
-            <div class="proj-num">PROJECT 02</div>
-            <span class="proj-icon">🚀</span>
-            <div class="proj-title">End-to-End CI/CD Automation on EKS</div>
-          </div>
-          <div class="proj-status">Deployed on EKS</div>
+    <!-- P2 -->
+    <div class="pcard">
+      <div class="pcard-num">PROJECT // 002</div>
+      <div class="pcard-title">Kubernetes Application Deployment on EKS</div>
+      <div class="pcard-desc">
+        Configured <strong>rolling updates</strong>, readiness probes, liveness probes, HPA scaling, and high availability setup on Amazon EKS using Helm charts. Applications maintain <strong>99.9% uptime</strong> with automatic self-healing.
+      </div>
+      <div class="pflow">
+        <div class="pflow-label">Deployment Flow</div>
+        <div class="pflow-steps">
+          <span class="pflow-step">Helm Chart</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">EKS Cluster</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">HPA Scale</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">Health Probes</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">99.9% Uptime</span>
         </div>
-        <div class="proj-body">
-          <p class="proj-desc">
-            Built a fully automated <strong>end-to-end CI/CD pipeline</strong> for a containerized microservice application. Code changes trigger a Jenkins pipeline that builds a Docker image, runs unit tests, tags and pushes the image to <strong>Amazon ECR</strong>, updates the Helm chart values, and commits back to Git — where <strong>ArgoCD</strong> detects the change and automatically syncs and deploys the new image to <strong>Amazon EKS</strong>. Zero-downtime rolling updates with health checks and automatic rollback on failure.
-          </p>
-          <div class="proj-flow">
-            <div class="flow-label">Pipeline Flow</div>
-            <div class="flow-steps">
-              <span class="flow-step">Code Push</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Jenkins Build</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Docker Build</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Push to ECR</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Update Helm</span><span class="flow-arrow">→</span>
-              <span class="flow-step">ArgoCD Sync</span><span class="flow-arrow">→</span>
-              <span class="flow-step">EKS Deploy</span>
-            </div>
-          </div>
-          <div class="proj-tech">
-            <span class="tech-badge">Jenkins</span>
-            <span class="tech-badge">Docker</span>
-            <span class="tech-badge">Amazon ECR</span>
-            <span class="tech-badge">ArgoCD</span>
-            <span class="tech-badge">Amazon EKS</span>
-            <span class="tech-badge">Helm</span>
-            <span class="tech-badge">Kubernetes</span>
-            <span class="tech-badge">GitOps</span>
-            <span class="tech-badge">GitHub</span>
-          </div>
-        </div>
+      </div>
+      <div class="pcard-tags">
+        <span class="ptag">Kubernetes</span><span class="ptag">Helm</span><span class="ptag">Rolling Updates</span>
+        <span class="ptag">HPA</span><span class="ptag">Probes</span><span class="ptag">EKS</span>
+      </div>
+      <div class="pcard-links">
+        <a href="https://github.com/amit6264" target="_blank" class="plink">⊙ View Code</a>
       </div>
     </div>
 
-    <!-- PROJECT 3 -->
-    <div class="proj-card">
-      <div class="proj-inner">
-        <div class="proj-side">
-          <div>
-            <div class="proj-num">PROJECT 03</div>
-            <span class="proj-icon">⚡</span>
-            <div class="proj-title">Jenkins + Docker + ECR + ArgoCD GitOps Deployment</div>
-          </div>
-          <div class="proj-status">GitOps Production</div>
+    <!-- P3 -->
+    <div class="pcard">
+      <div class="pcard-num">PROJECT // 003</div>
+      <div class="pcard-title">AWS Full-Stack End-to-End Infrastructure</div>
+      <div class="pcard-desc">
+        Provisioned a complete <strong>AWS infrastructure stack</strong> using Terraform — VPC, public/private subnets, NAT Gateway, EC2 Auto Scaling, ALB, RDS MySQL, S3, IAM, Route53, ACM SSL, and CloudWatch monitoring as reusable modules.
+      </div>
+      <div class="pflow">
+        <div class="pflow-label">Infrastructure Flow</div>
+        <div class="pflow-steps">
+          <span class="pflow-step">Terraform</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">VPC + EC2</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">ALB + RDS</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">Route53</span><span class="pflow-arr">→</span>
+          <span class="pflow-step">CloudWatch</span>
         </div>
-        <div class="proj-body">
-          <p class="proj-desc">
-            Implemented a <strong>GitOps-based deployment system</strong> using Jenkins as the CI engine and ArgoCD as the CD operator. Jenkins watches the application repository, runs the build pipeline, creates a versioned Docker image and pushes it to <strong>Amazon ECR</strong>. A separate Git config repo holds Kubernetes manifests — ArgoCD continuously monitors this repo and reconciles the live cluster state on <strong>EKS</strong> with the desired state in Git. Includes Slack notifications, environment-specific configs (dev/staging/prod), and automated rollback strategies.
-          </p>
-          <div class="proj-flow">
-            <div class="flow-label">GitOps Flow</div>
-            <div class="flow-steps">
-              <span class="flow-step">App Repo</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Jenkins CI</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Docker Image</span><span class="flow-arrow">→</span>
-              <span class="flow-step">ECR Push</span><span class="flow-arrow">→</span>
-              <span class="flow-step">Config Repo</span><span class="flow-arrow">→</span>
-              <span class="flow-step">ArgoCD CD</span><span class="flow-arrow">→</span>
-              <span class="flow-step">K8s Cluster</span>
-            </div>
-          </div>
-          <div class="proj-tech">
-            <span class="tech-badge">Jenkins</span>
-            <span class="tech-badge">Docker</span>
-            <span class="tech-badge">Amazon ECR</span>
-            <span class="tech-badge">ArgoCD</span>
-            <span class="tech-badge">Kubernetes</span>
-            <span class="tech-badge">EKS</span>
-            <span class="tech-badge">GitOps</span>
-            <span class="tech-badge">Slack Alerts</span>
-            <span class="tech-badge">Multi-env</span>
-          </div>
-        </div>
+      </div>
+      <div class="pcard-tags">
+        <span class="ptag">Terraform</span><span class="ptag">AWS VPC</span><span class="ptag">EC2+ASG</span>
+        <span class="ptag">ALB</span><span class="ptag">RDS</span><span class="ptag">Route53</span>
+      </div>
+      <div class="pcard-links">
+        <a href="https://github.com/amit6264" target="_blank" class="plink">⊙ View Code</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- TOOLS -->
-<section id="tools">
-  <div class="sec-head">
-    <span class="sec-idx">03 /</span>
-    <h2 class="sec-title">Toolset</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="tools-grid">
-    <div class="tool-tile"><span class="ico">🐙</span><div class="lbl">Git</div></div>
-    <div class="tool-tile"><span class="ico">🐱</span><div class="lbl">GitHub</div></div>
-    <div class="tool-tile"><span class="ico">🦊</span><div class="lbl">GitLab</div></div>
-    <div class="tool-tile"><span class="ico">🏗️</span><div class="lbl">Terraform</div></div>
-    <div class="tool-tile"><span class="ico">🤖</span><div class="lbl">GitHub Actions</div></div>
-    <div class="tool-tile"><span class="ico">🔧</span><div class="lbl">Jenkins</div></div>
-    <div class="tool-tile"><span class="ico">🔷</span><div class="lbl">GitLab CI</div></div>
-    <div class="tool-tile"><span class="ico">🐳</span><div class="lbl">Docker</div></div>
-    <div class="tool-tile"><span class="ico">☸️</span><div class="lbl">Kubernetes</div></div>
-    <div class="tool-tile"><span class="ico">⛵</span><div class="lbl">Helm</div></div>
-    <div class="tool-tile"><span class="ico">🔄</span><div class="lbl">ArgoCD</div></div>
-    <div class="tool-tile"><span class="ico">🟠</span><div class="lbl">AWS / EKS</div></div>
-    <div class="tool-tile"><span class="ico">📦</span><div class="lbl">Amazon ECR</div></div>
-    <div class="tool-tile"><span class="ico">🔵</span><div class="lbl">Azure</div></div>
-    <div class="tool-tile"><span class="ico">🟡</span><div class="lbl">GCP</div></div>
-    <div class="tool-tile"><span class="ico">🐧</span><div class="lbl">Linux</div></div>
-    <div class="tool-tile"><span class="ico">📜</span><div class="lbl">Bash</div></div>
-    <div class="tool-tile"><span class="ico">🐍</span><div class="lbl">Python</div></div>
+<!-- ── PIPELINE VISUALIZATION ── -->
+<section id="pipeline">
+  <span class="sec-eyebrow">how it works</span>
+  <h2 class="sec-big-title">DevOps <span class="cyan-text">Pipeline</span></h2>
+  <div class="sec-underline"></div>
+
+  <div class="pipe-visual">
+    <div class="pipe-title-sm">🔄 End-to-End CI/CD Flow — Jenkins + Docker + ECR + ArgoCD + EKS</div>
+
+    <div class="pipe-row">
+      <div class="pipe-stage"><div class="pipe-icon">📝</div><div class="pipe-box active">Code Commit<br>GitHub</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">🔧</div><div class="pipe-box active">Jenkins<br>Trigger</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">🧪</div><div class="pipe-box">Unit Tests<br>Quality Gate</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">🐳</div><div class="pipe-box active">Docker<br>Build Image</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">📦</div><div class="pipe-box active">Push to<br>Amazon ECR</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">📋</div><div class="pipe-box">Update Helm<br>Config Repo</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">🔄</div><div class="pipe-box active">ArgoCD<br>Sync</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">☸️</div><div class="pipe-box active">EKS<br>Deploy</div></div>
+      <div class="pipe-connector"></div>
+      <div class="pipe-stage"><div class="pipe-icon">✅</div><div class="pipe-box">Production<br>Live</div></div>
+    </div>
+
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ── ABOUT ── -->
 <section id="about">
-  <div class="sec-head">
-    <span class="sec-idx">04 /</span>
-    <h2 class="sec-title">About</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="about-grid">
-    <div class="terminal">
-      <div class="t-bar">
-        <div class="t-dot re"></div><div class="t-dot ye"></div><div class="t-dot gr"></div>
-        <div class="t-ttl">amit@devops — profile.sh</div>
+  <span class="sec-eyebrow">who am i</span>
+  <h2 class="sec-big-title">About <span class="cyan-text">Me</span></h2>
+  <div class="sec-underline"></div>
+  <div class="about-wrap">
+    <div class="about-text">
+      <h3>Building DevOps Culture,<br>One Pipeline at a Time</h3>
+      <p>I'm <strong>Amit Patidar</strong>, a <strong>MultiCloud DevOps Engineer</strong> trained at NareshIT, Hyderabad. I specialize in designing and automating the entire software delivery lifecycle — from code commit to production deployment.</p>
+      <p>My real-world project experience includes building <strong>end-to-end AWS infrastructure with Terraform</strong>, orchestrating <strong>Jenkins → Docker → ECR → ArgoCD → EKS</strong> deployment pipelines, and implementing true <strong>GitOps workflows</strong> for production-grade Kubernetes clusters.</p>
+      <p>I believe in <strong>automation-first thinking</strong> — if it's done more than once, it should be automated. My goal is to bridge the gap between development speed and operational stability.</p>
+    </div>
+    <div class="about-terminal">
+      <div class="at-bar">
+        <div class="tdot r"></div><div class="tdot y"></div><div class="tdot g"></div>
+        <div class="at-ttl">amit@devops — bash</div>
       </div>
-      <div class="t-body">
-        <div><span class="tp">amit@devops</span>:<span class="tc2">~</span>$ <span class="tc">whoami</span></div>
-        <div class="to">Amit Patidar — MultiCloud DevOps</div>
-        <br>
-        <div><span class="tp">amit@devops</span>:<span class="tc2">~</span>$ <span class="tc">cat skills.txt</span></div>
-        <div class="to"><span class="tk">►</span> Git / GitHub</div>
-        <div class="to"><span class="tk">►</span> Terraform (IaC)</div>
-        <div class="to"><span class="tk">►</span> Jenkins · GitHub Actions · GitLab CI</div>
-        <div class="to"><span class="tk">►</span> Docker · ECR</div>
-        <div class="to"><span class="tk">►</span> Kubernetes · EKS · ArgoCD</div>
-        <div class="to"><span class="tk">►</span> AWS · Azure · GCP</div>
-        <br>
-        <div><span class="tp">amit@devops</span>:<span class="tc2">~</span>$ <span class="tc">echo $INSTITUTE</span></div>
-        <div class="to"><span class="tv">NareshIT — Hyderabad</span></div>
-        <br>
-        <div><span class="tp">amit@devops</span>:<span class="tc2">~</span>$ <span class="tc">echo $STATUS</span></div>
+      <div class="at-body">
+        <div><span class="tp">amit</span><span class="td">@devops</span>:<span class="tc">~</span>$ <span class="tc">whoami</span></div>
+        <div class="to">Amit Patidar</div>
+        <div class="to">MultiCloud DevOps Engineer</div><br>
+        <div><span class="tp">amit</span><span class="td">@devops</span>:<span class="tc">~</span>$ <span class="tc">cat skills.sh</span></div>
+        <div class="to"><span class="tk">✔</span> Git · GitHub</div>
+        <div class="to"><span class="tk">✔</span> Terraform IaC</div>
+        <div class="to"><span class="tk">✔</span> Jenkins · GH Actions · GitLab CI</div>
+        <div class="to"><span class="tk">✔</span> Docker · Amazon ECR</div>
+        <div class="to"><span class="tk">✔</span> Kubernetes · EKS · Helm</div>
+        <div class="to"><span class="tk">✔</span> ArgoCD GitOps</div>
+        <div class="to"><span class="tk">✔</span> AWS · Azure · GCP</div><br>
+        <div><span class="tp">amit</span><span class="td">@devops</span>:<span class="tc">~</span>$ <span class="tc">echo $LOCATION</span></div>
+        <div class="to"><span class="tv">India 🇮🇳</span></div><br>
+        <div><span class="tp">amit</span><span class="td">@devops</span>:<span class="tc">~</span>$ <span class="tc">echo $STATUS</span></div>
         <div class="to"><span class="tv">OPEN_TO_WORK=true ✓</span></div>
       </div>
     </div>
-
-    <div class="about-content">
-      <h2>Building DevOps Culture, One Pipeline at a Time</h2>
-      <p>I'm <strong>Amit Patidar</strong>, a <strong>MultiCloud DevOps Engineer</strong> trained at NareshIT, Hyderabad. I specialize in designing and automating the entire software delivery lifecycle — from code commit to production deployment.</p>
-      <p>My real-world project experience includes building <strong>end-to-end AWS infrastructure with Terraform</strong>, orchestrating <strong>Jenkins → Docker → ECR → ArgoCD → EKS</strong> deployment pipelines, and implementing true <strong>GitOps workflows</strong> for production-grade Kubernetes clusters.</p>
-      <p>I believe in <strong>automation-first thinking</strong> — if it's done more than once, it should be automated. My goal is to bridge the gap between development speed and operational stability through modern DevOps practices.</p>
-      <div class="cert-grid">
-        <div class="cert"><div class="cert-ico">🏅</div><div><div class="cert-name">MultiCloud DevOps</div><div class="cert-sub">NareshIT Training</div></div></div>
-        <div class="cert"><div class="cert-ico">🟠</div><div><div class="cert-name">AWS Cloud</div><div class="cert-sub">EC2 · EKS · ECR · S3</div></div></div>
-        <div class="cert"><div class="cert-ico">☸️</div><div><div class="cert-name">Kubernetes</div><div class="cert-sub">EKS + ArgoCD GitOps</div></div></div>
-        <div class="cert"><div class="cert-ico">🔄</div><div><div class="cert-name">CI/CD</div><div class="cert-sub">Jenkins · GH Actions · GitLab</div></div></div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ── CONTACT ── -->
 <section id="contact">
-  <div class="sec-head">
-    <span class="sec-idx">05 /</span>
-    <h2 class="sec-title">Contact</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="contact-grid">
+  <span class="sec-eyebrow">get in touch</span>
+  <h2 class="sec-big-title">Let's <span class="cyan-text">Connect</span></h2>
+  <div class="sec-underline"></div>
+  <div class="contact-wrap">
     <div>
-      <h2 class="contact-heading">Let's Build<br><span class="grad">Something Great</span></h2>
+      <h2 class="contact-head">Let's Build<br><span class="cyan-text">Something Great</span></h2>
       <p class="contact-sub">Open to DevOps roles, cloud automation projects, and infrastructure consulting. Let's connect and talk pipelines.</p>
-      <div class="contact-rows">
-        <div class="crow"><span class="cico">📍</span><span class="clbl">Location</span><span class="cval">India</span></div>
+      <div class="crows">
+        <div class="crow"><span class="cico">📍</span><span class="clbl">Location</span><span class="cval">India 🇮🇳</span></div>
         <div class="crow"><span class="cico">🎓</span><span class="clbl">Training</span><span class="cval">NareshIT — MultiCloud DevOps</span></div>
-        <div class="crow"><span class="cico">🐱</span><span class="clbl">GitHub</span><a class="cval" href="https://github.com/amit6264" target="_blank">github.com/amit6264</a></div>
-        <div class="crow"><span class="cico">💼</span><span class="clbl">LinkedIn</span><a class="cval" href="https://www.linkedin.com/in/amit-patidar-93b149278" target="_blank">linkedin.com/in/amit-patidar-93b149278</a></div>
-        <div class="crow"><span class="cico">📧</span><span class="clbl">Email</span><a class="cval" href="mailto:amit.patidar6264@gmail.com">amit.patidar6264@gmail.com</a></div>
-        <div class="crow"><span class="cico">📞</span><span class="clbl">Contact</span><a class="cval" href="tel:+916264050742">+91 62640 50742</a></div>
-        <div class="crow"><span class="cico">💬</span><span class="clbl">WhatsApp</span><a class="cval" href="https://wa.me/916264050742" target="_blank">Message on WhatsApp</a></div>
+        <div class="crow"><span class="cico">🐱</span><span class="clbl">GitHub</span><span class="cval"><a href="https://github.com/amit6264" target="_blank">github.com/amit6264</a></span></div>
+        <div class="crow"><span class="cico">💼</span><span class="clbl">LinkedIn</span><span class="cval"><a href="https://www.linkedin.com/in/amit-patidar-93b149278" target="_blank">linkedin.com/in/amit-patidar-93b149278</a></span></div>
+        <div class="crow"><span class="cico">📧</span><span class="clbl">Email</span><span class="cval"><a href="/cdn-cgi/l/email-protection#1d7c707469336d7c6974797c6f2b2f2b295d7a707c7471337e7270"><span class="__cf_email__" data-cfemail="b9d8d4d0cd97c9d8cdd0ddd8cb8f8b8f8df9ded4d8d0d597dad6d4">[email&#160;protected]</span></a></span></div>
+        <div class="crow"><span class="cico">📞</span><span class="clbl">Phone</span><span class="cval"><a href="tel:+916264050742">+91 62640 50742</a></span></div>
+        <div class="crow"><span class="cico">💬</span><span class="clbl">WhatsApp</span><span class="cval"><a href="https://wa.me/916264050742" target="_blank">Message on WhatsApp</a></span></div>
+        <div class="crow"><span class="cico">📄</span><span class="clbl">Resume</span><span class="cval"><a href="https://drive.google.com/file/d/1PPcZTi_OCX4wyis7s7j13mGbu6c6ow17/view?usp=sharing" target="_blank">View / Download Resume</a></span></div>
       </div>
     </div>
-    <div class="skill-badges">
+    <div class="badge-stack">
       <div class="sbadge"><div class="sico">🌩️</div><div><div class="sname">AWS Infrastructure</div><div class="ssub">Terraform · VPC · EC2 · RDS · EKS</div></div></div>
       <div class="sbadge"><div class="sico">🔧</div><div><div class="sname">Jenkins CI/CD</div><div class="ssub">Build → Docker → ECR → Deploy</div></div></div>
       <div class="sbadge"><div class="sico">🔄</div><div><div class="sname">ArgoCD GitOps</div><div class="ssub">Kubernetes continuous delivery</div></div></div>
@@ -782,11 +786,28 @@ footer{
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="ft-name">Amit Patidar</div>
+  <div class="ft-logo">&lt;Amit Patidar /&gt;</div>
   <div class="ft-copy">© 2025 · MultiCloud DevOps Engineer · NareshIT · India</div>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (href && href.length > 1) {
+        var id = href.substring(1);
+        var target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
